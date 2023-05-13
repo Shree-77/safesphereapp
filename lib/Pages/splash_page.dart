@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:safesphereapp/Services/media_service.dart';
 import 'package:safesphereapp/Services/navigation_services.dart';
 
 class SplashPage extends StatefulWidget {
@@ -54,5 +55,8 @@ class _SplashPageState extends State<SplashPage> {
 
   void _registerServices() {
     GetIt.instance.registerSingleton<NavigationServices>(NavigationServices());
+    GetIt.instance.registerSingleton<MediaServices>(
+      MediaServices(),
+    );
   }
 }
