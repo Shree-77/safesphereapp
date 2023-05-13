@@ -57,9 +57,7 @@ class _SplashPageState extends State<SplashPage> {
 
   void _registerServices() {
     GetIt.instance.registerSingleton<NavigationServices>(NavigationServices());
-    GetIt.instance.registerSingleton<MediaServices>(
-      MediaServices(),
-    );
+    GetIt.instance.registerSingleton<MediaServices>(MediaServices());
     GetIt.instance
         .registerSingleton<CloudStorageServices>(CloudStorageServices());
   }
