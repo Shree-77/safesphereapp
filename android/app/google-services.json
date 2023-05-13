@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "778930562140",
+    "project_id": "safe-sphere",
+    "storage_bucket": "safe-sphere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778930562140:android:5a2a49a27c2f73d3aa3299",
+        "android_client_info": {
+          "package_name": "com.example.safesphereapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778930562140-86sjqmjgvcel3h3qivkate4ln1at5uuh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5iO28uGH5A0X53McgeSLmDiXiRhf03zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778930562140-86sjqmjgvcel3h3qivkate4ln1at5uuh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "778930562140-vnbo5ft653nlk7m8iqppubq3chi43rha.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.safesphereapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

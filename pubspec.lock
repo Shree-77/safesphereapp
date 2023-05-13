@@ -105,6 +105,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.3.0"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      sha256: "0dfe8a3da3052400a266e8d929d2940545aac4c37ec1f1c5e11c0df3175ce9ad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.4.0"
+  firebase_analytics_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_analytics_platform_interface
+      sha256: "45a023037fbb7d081bee5f6b0c421b33a48e2471ab27810bdbcc185c878bd317"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.0"
+  firebase_analytics_web:
+    dependency: transitive
+    description:
+      name: firebase_analytics_web
+      sha256: c60b1042cacf2c8075569717fe3b5f9e26936d2063bc8d749ca8b102fe6cfec0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.4"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -368,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  riverpod:
+    dependency: "direct main"
+    description:
+      name: riverpod
+      sha256: "80e48bebc83010d5e67a11c9514af6b44bbac1ec77b4333c8ea65dbc79e2d8ef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.6"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -389,6 +421,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      sha256: "8fe42610f179b843b12371e40db58c9444f8757f8b69d181c97e50787caed289"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.2+1"
   stream_channel:
     dependency: transitive
     description:
