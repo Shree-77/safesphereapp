@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:safesphereapp/Services/cloud_services.dart';
-import 'package:safesphereapp/Services/media_service.dart';
-import 'package:safesphereapp/Services/navigation_services.dart';
-import 'package:safesphereapp/Services/cloud_services.dart';
+
+import '../Services/cloud_services.dart';
+import '../Services/database_services.dart';
+import '../Services/media_service.dart';
+import '../Services/navigation_services.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
@@ -20,9 +21,11 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _setup().then(
-      (_) => widget.onInitializationComplete(),
-    );
+    Future.delayed(Duration(seconds: 2)).then((_) {
+      _setup().then(
+        (_) => widget.onInitializationComplete(),
+      );
+    });
   }
 
   @override
@@ -57,8 +60,9 @@ class _SplashPageState extends State<SplashPage> {
 
   void _registerServices() {
     GetIt.instance.registerSingleton<NavigationServices>(NavigationServices());
-    GetIt.instance.registerSingleton<MediaServices>(MediaServices());
+    GetIt.instance.registerSingleton<MediaService>(MediaService());
     GetIt.instance
         .registerSingleton<CloudStorageServices>(CloudStorageServices());
+    GetIt.instance.registerSingleton<DatabaseService>(DatabaseService());
   }
 }
