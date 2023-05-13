@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,6 +15,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    _setup().then(
+      (_) => widget.onInitializationComplete(),
+    );
   }
 
   @override
@@ -21,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
     return MaterialApp(
       title: 'SafeSphere',
       theme: ThemeData(
-        backgroundColor: Color.fromRGBO(35, 36, 49, 1.0),
+        backgroundColor: const Color.fromRGBO(35, 36, 49, 1.0),
         scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
       ),
       home: Scaffold(
@@ -29,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
             child: Container(
           height: 200,
           width: 200,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.contain,
               image: AssetImage('assets/images/logo.png'),
@@ -39,4 +43,12 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
   }
+
+  Future<void> _setup() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    _registerServices();
+  }
+
+  void _registerServices() {}
 }
