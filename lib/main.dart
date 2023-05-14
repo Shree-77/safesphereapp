@@ -13,6 +13,7 @@ import './Providers/authentication_provider.dart';
 import './Pages/splash_page.dart';
 import './Pages/login_page.dart';
 import './Pages/home_page.dart';
+import './Pages/register_page.dart';
 
 void main() => runApp(SplashPage(
     key: UniqueKey(),
@@ -48,6 +49,7 @@ class MainApp extends StatelessWidget {
         routes: {
           '/login': (BuildContext _context) => LoginPage(),
           '/home': (BuildContext _context) => HomePage(),
+          '/register': (BuildContext _context) => RegisterPage(),
         },
       ),
     );
