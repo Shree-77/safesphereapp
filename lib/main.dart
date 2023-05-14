@@ -12,6 +12,7 @@ import './Providers/authentication_provider.dart';
 //Pages
 import './Pages/splash_page.dart';
 import './Pages/login_page.dart';
+import './Pages/home_page.dart';
 
 void main() => runApp(SplashPage(
     key: UniqueKey(),
@@ -46,6 +47,7 @@ class MainApp extends StatelessWidget {
         initialRoute: '/login',
         routes: {
           '/login': (BuildContext _context) => LoginPage(),
+          '/home': (BuildContext _context) => HomePage(),
         },
       ),
     );
