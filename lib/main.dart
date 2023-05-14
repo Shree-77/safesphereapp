@@ -13,15 +13,13 @@ import './Providers/authentication_provider.dart';
 import './Pages/splash_page.dart';
 import './Pages/login_page.dart';
 
-void main() {
-  runApp(SplashPage(
-      key: UniqueKey(),
-      onInitializationComplete: () {
-        runApp(
-          MainApp(),
-        );
-      }));
-}
+void main() => runApp(SplashPage(
+    key: UniqueKey(),
+    onInitializationComplete: () {
+      runApp(
+        MainApp(),
+      );
+    }));
 
 class MainApp extends StatelessWidget {
   @override
