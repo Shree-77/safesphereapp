@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../Services/media_service.dart';
 import '../Services/cloud_services.dart';
 import '../Services/database_services.dart';
+import '../Services/navigation_services.dart';
 
 //Widgets
 
@@ -29,6 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
   late double _deviceHeight;
   late double _deviceWidth;
 
+  late AuthenticationProvider _auth;
+  late DatabaseService _db;
+  late CloudStorageServices _cloudStorageServices;
+  late NavigationServices _navigation;
+
   String? _email;
   String? _password;
   String? _name;
@@ -39,6 +45,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    _auth = Provider.of<AuthenticationProvider>(context);
+    _db = GetIt.instance.get<DatabaseService>();
+    _cloudStorageServices = GetIt.instance.get<CloudStorageServices>();
+    _navigation = GetIt.instance.get<NavigationServices>();
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     return _buildUI();
@@ -59,9 +69,20 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             _profileImageField(),
             SizedBox(
-              height: _deviceHeight * 0.05,
+              height: _deviceHeight * 0.02,
+            ),
+            Text("Click image to change"),
+            SizedBox(
+              height: _deviceHeight * 0.02,
             ),
             _registerForm(),
+            SizedBox(
+              height: _deviceHeight * 0.05,
+            ),
+            _registerButton(),
+            SizedBox(
+              height: _deviceHeight * 0.02,
+            ),
           ],
         ),
       ),
@@ -114,8 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   hintText: "Name",
                   obscureText: false,
-                  regEx:
-                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
+                  regEx: r".{6,}"),
               CustomTextFormField(
                   onSaved: (_value) {
                     setState(() {
@@ -136,6 +156,27 @@ class _RegisterPageState extends State<RegisterPage> {
                   regEx: r".{8,}"),
             ]),
       ),
+    );
+  }
+
+  Widget _registerButton() {
+    return RoundedButton(
+      height: _deviceHeight * 0.065,
+      width: _deviceWidth * 0.65,
+      name: "Register",
+      onPressed: () async {
+        if (_registerFormKey.currentState!.validate() &&
+            _profileImage != null) {
+          _registerFormKey.currentState!.save();
+          String? _uid = await _auth.registerUserUsingEmailandPassword(
+              _email!, _password!);
+          String? _imageURL = await _cloudStorageServices
+              .saveUserImageToStorage(_uid!, _profileImage!);
+          await _db.createUser(_uid, _email!, _name!, _imageURL!);
+          await _auth.logout();
+          await _auth.loginUsingEmailAndPassword(_email!, _password!);
+        }
+      },
     );
   }
 }

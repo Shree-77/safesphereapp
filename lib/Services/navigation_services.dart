@@ -18,4 +18,8 @@ class NavigationServices {
       return _page;
     }));
   }
+
+  void goBack() {
+    navigatorKey.currentState?.pop();
+  }
 }
